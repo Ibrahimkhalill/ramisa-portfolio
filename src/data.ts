@@ -1,10 +1,12 @@
 /**
- * Every fact on this site comes from the existing portfolio at
- * https://ramisaportfolio.vercel.app and lives here, in one place.
+ * Every fact on this site lives here, in one place. Nothing is invented.
  *
- * Nothing in this file is invented. Figures, dates, award names, repository
- * URLs, course titles and the paper title are transcribed as published. If a
- * number changes there, change it here and the whole site follows.
+ * Primary source is the CV (Nidhi_Resume), which supersedes the earlier
+ * portfolio at https://ramisaportfolio.vercel.app wherever the two disagree —
+ * the CV is newer and several things had moved: the Betopia role and dates, the
+ * JVAI end date, and the GitLab agent's scan cycle and scale. Repository URLs,
+ * award names, the paper title and the Kaggle figures are transcribed as
+ * published. Change a number here and the whole site follows.
  */
 
 export const PROFILE = {
@@ -12,7 +14,7 @@ export const PROFILE = {
   initials: 'RSN',
   role: 'AI Developer & ML Engineer',
   location: 'Dhaka, Bangladesh',
-  currentRole: 'AI Developer at Betopia Group',
+  currentRole: 'Software Developer (AI/ML) at Betopia Limited',
   email: 'ramisa.sharar377@gmail.com',
   github: 'https://github.com/Ramisa-16',
   githubHandle: 'github.com/Ramisa-16',
@@ -39,6 +41,7 @@ export type Project = {
   tech: string[];
   /** Which architecture diagram to render alongside it. */
   diagram:
+    | 'coder'
     | 'gitlab'
     | 'ppr'
     | 'scraper'
@@ -62,21 +65,32 @@ export const PROJECTS: Project[] = [
   {
     index: '01',
     category: 'Developer Tooling · Betopia',
+    title: 'Betopia AI Coder — VS Code Extension',
+    description:
+      'An in-editor AI coding agent. It reads the open workspace, plans a change across multiple files, and returns the edits as reviewable diffs the developer accepts or rejects — nothing is applied behind your back. A streaming chat sidebar carries codebase-aware context retrieval, file and symbol mentions, and terminal command execution gated behind explicit approval. The model layer is provider-agnostic, with MCP tool integration so the assistant can reach internal systems and repositories. Packaged and distributed as an internal extension to engineering teams across Betopia’s business units.',
+    tech: ['TypeScript', 'VS Code Extension API', 'LLM', 'MCP', 'Node.js'],
+    diagram: 'coder',
+    href: '',
+    private: true,
+  },
+  {
+    index: '02',
+    category: 'Developer Tooling · Betopia',
     title: 'GitLab Analysis Agent',
     description:
-      'A Django + Celery agent that scans every GitLab repository on a 39-minute cycle. An eight-step pipeline authenticates, fetches repositories, extracts features with an LLM, finds similar and unique capabilities, runs a quality check, calculates reusable code percentage, and suggests potential IP products. Supports Anthropic, OpenAI and Gemini with automatic fallback. A companion React dashboard presents it across twelve pages — project explorer, feature browser, modules, domains, similarity viewer, quality reports, IP suggestions, semantic search and agent run history.',
+      'A Django + Celery agent that scans 80,000+ GitLab repositories on a 24-hour cycle. An eight-step pipeline extracts features with an LLM, detects similarity, scores quality, calculates reusable code percentage, and suggests potential IP products. A twelve-page React dashboard sits over it — project explorer, feature browser, modules, domains, similarity viewer, quality reports, IP suggestions, semantic search and agent run history. Deployed with Docker and Vercel.',
     tech: ['Django', 'Celery', 'PostgreSQL', 'Redis', 'Docker', 'LLM', 'React'],
     diagram: 'gitlab',
     href: 'https://github.com/Ramisa-16/Gitlab-Backend-Main',
     private: true,
     facts: [
+      { value: '80,000+', label: 'Repositories scanned' },
       { value: '8', label: 'Pipeline steps' },
-      { value: '39 min', label: 'Scan cycle' },
       { value: '12', label: 'Dashboard pages' },
     ],
   },
   {
-    index: '02',
+    index: '03',
     category: 'GovTech · Applied AI',
     title: 'PPR Procurement Evaluation Assistant',
     description:
@@ -87,7 +101,7 @@ export const PROJECTS: Project[] = [
     private: true,
   },
   {
-    index: '03',
+    index: '04',
     category: 'Data Engineering · Bangla NLP',
     title: 'Bangladesh Bank Circular Scraper',
     description:
@@ -103,7 +117,17 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    index: '04',
+    index: '05',
+    category: 'Research · Speech Synthesis',
+    title: 'TTS Architecture & Voice Cloning R&D',
+    description:
+      'A full text-to-speech pipeline implemented from scratch across five architectures — Tacotron2, FastSpeech, WaveNet, GAN-TTS and VAE-based — covering data preparation through to deployment with a custom vocoder.',
+    tech: ['Tacotron2', 'FastSpeech', 'WaveNet', 'GAN-TTS', 'Voice Cloning'],
+    diagram: 'voice',
+    href: 'https://github.com/Ramisa-16/R-D-about-TTS-Models-Architecture-Structure',
+  },
+  {
+    index: '06',
     category: 'Voice AI · Product',
     title: 'Language Learning App',
     description:
@@ -113,7 +137,7 @@ export const PROJECTS: Project[] = [
     href: 'https://github.com/Ramisa-16/Language-Learning-App',
   },
   {
-    index: '05',
+    index: '07',
     category: 'AI Platform · White-label',
     title: 'White-Label AI Culinary Platform',
     description:
@@ -122,23 +146,13 @@ export const PROJECTS: Project[] = [
     diagram: 'culinary',
     href: 'https://github.com/Ramisa-16/White-Label-AI-Culinary-Platform',
   },
-  {
-    index: '06',
-    category: 'Research · Speech Synthesis',
-    title: 'TTS Architecture & Voice Cloning R&D',
-    description:
-      'Deep research into building text-to-speech systems from scratch and via fine-tuning, covering Tacotron2, FastSpeech, WaveNet, GAN-TTS and VAE-based architectures. Documents the full pipeline: data preprocessing, encoder-decoder, mel-spectrogram loss, and deployment.',
-    tech: ['Tacotron2', 'FastSpeech', 'WaveNet', 'GAN-TTS', 'Voice Cloning'],
-    diagram: 'voice',
-    href: 'https://github.com/Ramisa-16/R-D-about-TTS-Models-Architecture-Structure',
-  },
 ];
 
 export const FOCUS = [
   {
     index: '01',
     title: 'LLM & AI Engineering',
-    items: ['Claude API', 'OpenAI GPT', 'RAG', 'Agents', 'MCP', 'Elasticsearch', 'pgvector'],
+    items: ['Claude API', 'OpenAI GPT', 'Gemini', 'RAG', 'Agents', 'MCP', 'Elasticsearch', 'pgvector'],
   },
   {
     index: '02',
@@ -148,31 +162,31 @@ export const FOCUS = [
   {
     index: '03',
     title: 'Machine Learning',
-    items: ['TensorFlow', 'Keras', 'scikit-learn', 'Pandas', 'NumPy', 'Deep Learning'],
+    items: ['TensorFlow', 'Keras', 'PyTorch', 'scikit-learn', 'EfficientNetB3', 'ConvNeXt', 'Transfer Learning'],
   },
   {
     index: '04',
     title: 'Computer Vision',
-    items: ['OpenCV', 'YOLO', 'OCR', 'Segmentation', 'CVAT', 'labelImg'],
+    items: ['OpenCV', 'YOLO', 'OCR', 'Tesseract', 'Segmentation', 'CVAT', 'labelImg'],
   },
 ];
 
 export const EXPERIENCE = [
   {
     index: '01',
-    role: 'AI Developer',
-    org: 'Betopia Group — Anthropic Partner',
-    period: 'April 2025 — Present',
+    role: 'Software Developer Level 1 (AI/ML)',
+    org: 'Betopia Limited',
+    period: 'April 2026 — Present',
     place: 'Mohakhali, Dhaka',
-    body: 'Building AI-driven platforms across 17 Strategic Business Units — GitLab intelligence tools, LLM-powered developer tooling, RAG systems and production AI solutions. Completed all four Anthropic Academy courses as part of the partner onboarding.',
-    tags: ['LLMs', 'Django', 'React', 'RAG', 'pgvector', 'MCP', 'Celery'],
+    body: 'Building AI-driven platforms across 17 Strategic Business Units — a GitLab Intelligence Agent, LLM-powered developer tooling and RAG systems. Built retrieval pipelines on pgvector and Elasticsearch, chunking and embedding internal documentation so the agents answer from company data rather than generic model knowledge. Completed all four Anthropic Academy certifications.',
+    tags: ['TypeScript', 'Django', 'React', 'Celery', 'RAG', 'pgvector', 'Elasticsearch', 'MCP', 'Docker'],
     awards: [],
   },
   {
     index: '02',
     role: 'Junior AI Developer → Acting Team Lead',
-    org: 'Joint Venture AI (JVAI) — sister concern of Betopia Group',
-    period: 'December 2024 — April 2025',
+    org: 'Joint Venture AI (JVAI), Betopia Group',
+    period: 'December 2024 — April 2026',
     place: 'Banasree, Dhaka',
     body: 'Promoted from Trainee to Junior AI Developer after probation. Worked on e-Clinic AI (a healthcare chatbot), Content Integrity Pro (an AI text humanizer and detector), and several client-facing AI platforms. Briefly served as acting team leader.',
     tags: ['STT/TTS', 'OCR', 'Voice Cloning'],
@@ -180,9 +194,9 @@ export const EXPERIENCE = [
   },
   {
     index: '03',
-    role: 'ML Trainer',
+    role: 'ML Training Instructor',
     org: 'Betopia Tech Recruitment Program (BTRP)',
-    period: '2025',
+    period: '2026',
     place: '40 students from top universities',
     body: 'Conducted training sessions covering Classification, Regression, Deep Learning (CNN, RNN, FNN), Generative AI, LLMs, Transfer Learning and OpenCV. Evaluated and advanced participants through selection phases.',
     tags: ['Classification', 'Regression', 'CNN', 'RNN', 'FNN', 'Generative AI', 'LLMs', 'Transfer Learning', 'OpenCV'],
@@ -190,7 +204,7 @@ export const EXPERIENCE = [
   },
   {
     index: '04',
-    role: 'Thesis Research — Cancer Care AI',
+    role: 'Thesis Researcher — Cancer Care AI',
     org: 'BRAC University · Supervisor: Dr. Jannatun Noor Mukta',
     period: '2023 — 2025',
     place: 'Government-funded',
@@ -210,8 +224,8 @@ export const RESEARCH = [
   },
   {
     kind: 'Certification',
-    title: 'Anthropic Academy — all four courses',
-    venue: 'Anthropic Partner Network onboarding, 2025',
+    title: 'Anthropic Academy — all four certifications',
+    venue: 'Claude API · Agent Skills · MCP · Claude Code',
     detail:
       'Introduction to Agent Skills · Building with the Claude API · Introduction to MCP · Claude Code in Action.',
   },

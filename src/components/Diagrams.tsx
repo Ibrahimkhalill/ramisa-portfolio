@@ -53,7 +53,53 @@ const Frame = ({
   </figure>
 );
 
-/* ---------------------------------------------------- 01 GitLab agent */
+/* ------------------------------------------------ 01 Betopia AI Coder */
+
+function CoderDiagram() {
+  return (
+    <Frame label="In-editor agent loop">
+      <ol className="space-y-0">
+        {[
+          ['Open workspace', 'context retrieval'],
+          ['Plan across files', 'LLM'],
+          ['Reviewable diffs', 'multi-file'],
+        ].map(([k, v]) => (
+          <li key={k}>
+            <div className="flex items-center justify-between gap-4 border border-rule bg-paper px-4 py-3">
+              <span className="break-words text-[14px] text-body">{k}</span>
+              <span className="meta shrink-0">{v}</span>
+            </div>
+            <Arrow vertical />
+          </li>
+        ))}
+      </ol>
+      {/* The point of the tool: nothing lands without a human saying so. */}
+      <div className="grid grid-cols-2 gap-3">
+        <div className="border border-accent/35 bg-accent/[0.07] px-4 py-3 text-center">
+          <span className="font-mono text-[14px] text-accent">ACCEPT</span>
+        </div>
+        <div className="border border-rule bg-paper px-4 py-3 text-center">
+          <span className="font-mono text-[14px] text-faint">REJECT</span>
+        </div>
+      </div>
+
+      <div className="mt-6 grid grid-cols-1 gap-px bg-rule">
+        {[
+          ['MCP tools', 'reaches internal systems'],
+          ['Provider-agnostic', 'model layer'],
+          ['Terminal commands', 'gated behind approval'],
+        ].map(([k, v]) => (
+          <div key={k} className="bg-paper px-4 py-3">
+            <p className="break-words font-mono text-[12px] text-body">{k}</p>
+            <p className="mt-1 text-[12px] text-faint">{v}</p>
+          </div>
+        ))}
+      </div>
+    </Frame>
+  );
+}
+
+/* ---------------------------------------------------- 02 GitLab agent */
 
 const GITLAB_STEPS = [
   'Authenticate',
@@ -68,7 +114,7 @@ const GITLAB_STEPS = [
 
 function GitLabDiagram() {
   return (
-    <Frame label="8-step pipeline · every 39 minutes">
+    <Frame label="8-step pipeline · 80,000+ repositories">
       <ol className="grid grid-cols-1 gap-px bg-rule sm:grid-cols-2">
         {GITLAB_STEPS.map((step, i) => (
           <li
@@ -276,6 +322,7 @@ function VoiceDiagram() {
 }
 
 const MAP = {
+  coder: CoderDiagram,
   gitlab: GitLabDiagram,
   ppr: PprDiagram,
   scraper: ScraperDiagram,

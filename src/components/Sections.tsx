@@ -213,20 +213,21 @@ export function About() {
             <div className="space-y-7 text-[16px] leading-[1.75] text-body md:text-[17px]">
               <p>
                 I build AI systems that have to survive contact with real users.
-                At Betopia Group — an Anthropic partner — that means platforms
-                across 17 Strategic Business Units: GitLab intelligence tooling,
-                LLM-powered developer tools, RAG systems, and production AI.
+                At Betopia that means platforms across 17 Strategic Business
+                Units: a GitLab intelligence agent, an in-editor AI coding
+                assistant shipped to engineering teams, RAG pipelines on
+                pgvector and Elasticsearch, and production AI.
               </p>
               <p>
                 The work runs from research to deployment. On one side, reading
                 TTS papers closely enough to rebuild Tacotron2, FastSpeech and
                 WaveNet from scratch, and a government-funded cancer care project
-                that meant encoding ten staging systems across 138 cancer types.
-                On the other, the unglamorous engineering that makes those things
-                usable — an agent scanning every repository on a 39-minute cycle,
-                OCR that recovers Bijoy-encoded Bangla from decades of bank
-                circulars, a tender evaluator that has to return a defensible
-                Pass or Fail.
+                that meant encoding nine staging systems across 138 cancer types
+                as machine-readable rules. On the other, the unglamorous
+                engineering that makes those things usable — an agent scanning
+                80,000+ repositories on a daily cycle, OCR that recovers
+                Bijoy-encoded Bangla from decades of bank circulars, a tender
+                evaluator that has to return a defensible Pass or Fail.
               </p>
               <p>
                 Before that I was at Joint Venture AI, where I moved from Trainee
