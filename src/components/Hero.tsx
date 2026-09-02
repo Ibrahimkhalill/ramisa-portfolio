@@ -80,24 +80,68 @@ export default function Hero() {
           </div>
 
           {/* ---- portrait ----
-               Set at the end of the row and kept modest: the headline is the
-               subject of this page, not the photograph. Editorial framing — a
-               hairline border, a caption beneath, no rounding, no shadow. */}
-          <Reveal delay={860} className="lg:pb-2">
-            <figure className="w-[230px] sm:w-[270px]">
-              <div className="overflow-hidden border border-rule bg-raised">
-                <img
-                  src={PROFILE.photo}
-                  alt={PROFILE.name}
-                  width={540}
-                  height={675}
-                  className="aspect-[4/5] w-full object-cover object-top grayscale-[0.2] transition-[transform,filter] duration-[1100ms] ease-out hover:scale-[1.03] hover:grayscale-0"
+               The photograph is a cutout with a real alpha channel, which is
+               what makes this treatment possible: a tinted panel sits behind
+               her and she stands clear of its top edge, so the figure breaks
+               out of the block instead of being boxed inside it. A rectangular
+               photo cannot do that, and it is the whole difference between
+               "profile picture" and something that reads as art-directed.
+
+               The headline is still the subject of the page, so the panel stays
+               quiet — a wash of the accent at 5%, one hairline, a mono caption
+               set on its side. No shadow, no rounding, no glow. */}
+          <Reveal delay={860}>
+            <figure className="w-[190px] sm:w-[215px] lg:w-[240px]">
+              {/* The panel is scoped to the image only — run it behind the
+                  caption too and the caption ends up sitting on a tint, which
+                  muddies both. */}
+              <div className="relative">
+                {/* the block she stands in front of */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-x-0 bottom-0 top-[18%] border border-rule bg-accent/[0.05]"
                 />
+                {/* a single rule running behind her, at shoulder height */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-[38%] h-px bg-rule"
+                />
+
+                {/* vertical mono label down the left edge — quiet, and it pins
+                    the composition to the panel rather than floating beside it */}
+                <span
+                  className="absolute -left-7 bottom-4 hidden font-mono text-[11px] uppercase tracking-[0.22em] text-faint sm:block"
+                  style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+                >
+                  Dhaka, Bangladesh
+                </span>
+
+                {/* The cutout ends mid-coat, so a hard bottom edge reads as an
+                    accidental crop. Dissolving the last fifth turns it into a
+                    deliberate fade instead. */}
+                <picture>
+                  <source srcSet="/ramisa.webp" type="image/webp" />
+                  <img
+                    src="/ramisa.png"
+                    alt={PROFILE.name}
+                    width={852}
+                    height={1460}
+                    className="relative block w-full grayscale-[0.35] transition-[transform,filter] duration-[1200ms] ease-out hover:scale-[1.02] hover:grayscale-0"
+                    style={{
+                      maskImage:
+                        'linear-gradient(to bottom, #000 78%, rgba(0,0,0,0.55) 92%, transparent 100%)',
+                      WebkitMaskImage:
+                        'linear-gradient(to bottom, #000 78%, rgba(0,0,0,0.55) 92%, transparent 100%)',
+                    }}
+                  />
+                </picture>
               </div>
-              <figcaption className="mt-4 font-mono text-[12px] leading-relaxed text-faint">
-                {PROFILE.name}
-                <br />
-                {PROFILE.role}
+
+              <figcaption className="mt-5 flex items-baseline justify-between gap-4">
+                <span className="font-mono text-[12px] leading-none text-body">
+                  {PROFILE.name}
+                </span>
+                <span className="font-mono text-[11px] leading-none text-faint">RSN</span>
               </figcaption>
             </figure>
           </Reveal>

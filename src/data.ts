@@ -22,7 +22,7 @@ export const PROFILE = {
   linkedinHandle: 'linkedin.com/in/ramisashararnidhi',
   kaggle: 'https://www.kaggle.com/ramisashararnidhi',
   kaggleHandle: 'kaggle.com/ramisashararnidhi',
-  photo: '/ramisa.jpg',
+  photo: '/ramisa.webp',
 };
 
 /** The credibility strip. Four figures, all published on the source site. */
