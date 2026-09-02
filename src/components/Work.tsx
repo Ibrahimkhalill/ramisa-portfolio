@@ -82,20 +82,32 @@ export default function Work() {
                     </ul>
 
                     <div className="mt-12">
-                      <a
-                        href={p.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2.5 text-[15px] text-ink"
-                      >
-                        <span className="link-underline">View on GitHub</span>
-                        <span
-                          aria-hidden="true"
-                          className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      {p.private ? (
+                        // Company work — the repository is private, so say so
+                        // rather than send the reader to a 404.
+                        <p className="inline-flex items-center gap-2.5 font-mono text-[13px] text-faint">
+                          <span
+                            aria-hidden="true"
+                            className="inline-block h-1.5 w-1.5 rounded-full bg-faint/60"
+                          />
+                          Private repository — internal Betopia work
+                        </p>
+                      ) : (
+                        <a
+                          href={p.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2.5 text-[15px] text-ink"
                         >
-                          ↗
-                        </span>
-                      </a>
+                          <span className="link-underline">View on GitHub</span>
+                          <span
+                            aria-hidden="true"
+                            className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                          >
+                            ↗
+                          </span>
+                        </a>
+                      )}
                     </div>
                   </div>
 

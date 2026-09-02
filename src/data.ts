@@ -46,6 +46,14 @@ export type Project = {
     | 'culinary'
     | 'voice';
   href: string;
+  /**
+   * The Betopia work repositories are private, so an anonymous visitor gets a
+   * 404. Rather than ship a dead link, those are labelled instead of linked.
+   * Verified by request: Gitlab-Backend-Main, Gitlab-Frontend-Main,
+   * PPR-PE-Assistant and BangladeshBank return 404 unauthenticated; every other
+   * repository linked here returns 200.
+   */
+  private?: boolean;
   /** Optional figures pulled from the source, rendered as a small stat row. */
   facts?: { value: string; label: string }[];
 };
@@ -60,6 +68,7 @@ export const PROJECTS: Project[] = [
     tech: ['Django', 'Celery', 'PostgreSQL', 'Redis', 'Docker', 'LLM', 'React'],
     diagram: 'gitlab',
     href: 'https://github.com/Ramisa-16/Gitlab-Backend-Main',
+    private: true,
     facts: [
       { value: '8', label: 'Pipeline steps' },
       { value: '39 min', label: 'Scan cycle' },
@@ -75,6 +84,7 @@ export const PROJECTS: Project[] = [
     tech: ['Python', 'GPT-4o Vision', 'OCR', 'PDF', 'GovTech'],
     diagram: 'ppr',
     href: 'https://github.com/Ramisa-16/PPR-PE-Assistant',
+    private: true,
   },
   {
     index: '03',
@@ -85,6 +95,7 @@ export const PROJECTS: Project[] = [
     tech: ['Python', 'Selenium', 'Tesseract OCR', 'Bangla NLP', 'PDF'],
     diagram: 'scraper',
     href: 'https://github.com/Ramisa-16/BangladeshBank',
+    private: true,
     facts: [
       { value: '4,627', label: 'PDF circulars found' },
       { value: '4,600', label: 'PDFs downloaded' },
@@ -251,11 +262,11 @@ export const EDUCATION = [
 
 /** A selection, not the full 71 — the rest are one click away. */
 export const REPOS = [
-  { name: 'Gitlab-Backend-Main', desc: 'Django + Celery GitLab analysis agent', lang: 'Python' },
   { name: 'Gitlab-Pages-Agent', desc: 'CLI agent auto-deploying a docs portal via GitLab Pages', lang: 'Python' },
-  { name: 'PPR-PE-Assistant', desc: 'Government tender evaluation with GPT-4o Vision', lang: 'Python' },
-  { name: 'BangladeshBank', desc: 'Circular scraper with Bijoy-encoded Bangla OCR', lang: 'Python' },
+  { name: 'Github---Gitlab-importer', desc: 'Repository migration tooling across 17 SBUs', lang: 'Python' },
   { name: 'Language-Learning-App', desc: 'Audio-to-audio learning with grammar correction', lang: 'Python' },
+  { name: 'Yacht-Assistant-Chatbot', desc: 'GPT-3.5 assistant with docking, navigation and weather modes', lang: 'Jupyter' },
+  { name: 'AI-Clothing-Analyzer-Background-Remover', desc: 'Segmentation-based clothing analysis and cutout', lang: 'Python' },
   { name: 'R-D-about-TTS-Models-Architecture-Structure', desc: 'TTS architecture and voice cloning research', lang: 'Docs' },
   { name: 'Real-Time-Object-Detection-with-CCTV-Camera-Feed', desc: 'YOLO detection on live CCTV feeds', lang: 'Python' },
   { name: 'Heart-Attack-Risk-Prediction-Using-ML-Models', desc: 'Ensemble models with full EDA pipeline', lang: 'Jupyter' },
