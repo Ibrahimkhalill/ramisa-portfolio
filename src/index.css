@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans;
+    font-size: 16px;
+    line-height: 1.6;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'ss01';
+  }
+
+  ::selection {
+    background: #3F6B52;
+    color: #FBFAF8;
+  }
+
+  :focus-visible {
+    outline: 1.5px solid #3F6B52;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Editorial display type. Sizes are fluid so headings stay strong on a
+     phone instead of collapsing into body copy. */
+  .display {
+    @apply font-sans font-normal tracking-tightest;
+    line-height: 1.02;
+  }
+
+  /* Compact technical metadata — the mono is what makes the page read as
+     engineering rather than marketing. */
+  /* Metadata was 11px, which read as decoration rather than information.
+     13px keeps the compact technical feel and is actually legible. */
+  .meta {
+    @apply font-mono text-[12px] uppercase tracking-[0.14em] text-muted;
+  }
+
+  .rule-t {
+    @apply border-t border-rule;
+  }
+
+  /* Link with an underline that draws in from the left on hover. */
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-[-2px] left-0 h-px w-full origin-right scale-x-0 bg-current;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-underline:hover::after {
+    @apply origin-left scale-x-100;
+  }
+}
+
+/* Reveal-on-scroll. Kept as a class toggle driven by IntersectionObserver so
+   there is no scroll listener anywhere on the page. */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* The whole page has to hold up with animation off — every reveal resolves to
+   its final state rather than staying hidden. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
