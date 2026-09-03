@@ -79,8 +79,8 @@ export const PROJECTS: Project[] = [
     category: 'Developer Tooling · Betopia',
     title: 'Betopia Web Builder',
     description:
-      'A desktop environment that turns a Figma design URL into a running React application. It writes the project spec first — architecture, design system and asset inventory — then generates the frontend component by component, with a code editor, a live preview and a real terminal in the same window. The agent’s file writes and shell commands are each recorded in an append-only audit log alongside their approval state, so anything touching the developer’s machine is either signed off or explicitly marked as not needing it. A console tracks TypeScript errors and warnings against the live build with a one-press Auto Fix, and Git and publishing are built in. In beta inside Betopia.',
-    tech: ['TypeScript', 'React', 'Vite', 'LLM', 'Node.js', 'Git'],
+      'A desktop environment that turns a Figma design URL into a running React application. It writes the project spec first — architecture, design system and asset inventory — then generates the interface component by component, with a code editor, a live preview and a real terminal in the same window. The agent’s file writes and shell commands are each recorded in an append-only audit log alongside their approval state, so anything touching the developer’s machine is either signed off or explicitly marked as not needing it. A console tracks TypeScript errors and warnings against the live build with a one-press Auto Fix, and Git version control and a publish step carry a project from first generation to a deployed URL without leaving the window. Built across the stack: the workspace and UI generation at the front, and the project, execution and deployment services behind them. In beta inside Betopia.',
+    tech: ['TypeScript', 'React', 'Node.js', 'LLM', 'Terminal', 'Git', 'Vercel'],
     diagram: 'builder',
     href: '',
     private: true,
