@@ -81,34 +81,28 @@ export default function Hero() {
 
           {/* ---- portrait ----
                The photograph is a cutout with a real alpha channel, which is
-               what makes this treatment possible: a tinted panel sits behind
-               her and she stands clear of its top edge, so the figure breaks
-               out of the block instead of being boxed inside it. A rectangular
-               photo cannot do that, and it is the whole difference between
-               "profile picture" and something that reads as art-directed.
+               what lets it sit straight on the paper with no frame at all.
 
-               The headline is still the subject of the page, so the panel stays
-               quiet — a wash of the accent at 5%, one hairline, a mono caption
-               set on its side. No shadow, no rounding, no glow. */}
+               There was a tinted block behind her, meant to read as something
+               she stands in front of. It did not: cropped to head-and-shoulders
+               its edge landed mid-figure and looked like a stray rectangle, and
+               once a reader has to ask whether a shape is design or a rendering
+               fault, the shape has already failed. The cutout carries itself.
+
+               The source is a full-length shot. At this size that left the face
+               about sixty pixels tall — present, but not legible. Cropped to
+               head-and-shoulders it is roughly double that in the same slot,
+               and the frame is rotated -3.5° first because the subject leans:
+               measured off the torso centroid, and checked against the scarf's
+               embroidered strip, which now reads vertical.
+
+               No shadow, no rounding, no glow, no frame — a mono caption
+               underneath and the location set on its side. */}
           <Reveal delay={860}>
-            <figure className="w-[190px] sm:w-[215px] lg:w-[240px]">
-              {/* The panel is scoped to the image only — run it behind the
-                  caption too and the caption ends up sitting on a tint, which
-                  muddies both. */}
+            <figure className="w-[200px] sm:w-[225px] lg:w-[255px]">
               <div className="relative">
-                {/* the block she stands in front of */}
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-x-0 bottom-0 top-[18%] border border-rule bg-accent/[0.05]"
-                />
-                {/* a single rule running behind her, at shoulder height */}
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-x-0 top-[38%] h-px bg-rule"
-                />
-
-                {/* vertical mono label down the left edge — quiet, and it pins
-                    the composition to the panel rather than floating beside it */}
+                {/* vertical mono label down the left edge — quiet, and it gives
+                    the cutout a left edge to sit against */}
                 <span
                   className="absolute -left-7 bottom-4 hidden font-mono text-[11px] uppercase tracking-[0.22em] text-faint sm:block"
                   style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
@@ -124,8 +118,8 @@ export default function Hero() {
                   <img
                     src="/ramisa.png"
                     alt={PROFILE.name}
-                    width={852}
-                    height={1460}
+                    width={760}
+                    height={816}
                     className="relative block w-full grayscale-[0.35] transition-[transform,filter] duration-[1200ms] ease-out hover:scale-[1.02] hover:grayscale-0"
                     style={{
                       maskImage:

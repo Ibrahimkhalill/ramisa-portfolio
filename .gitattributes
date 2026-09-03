@@ -1,0 +1,7 @@
+# Keep the working tree on LF — Windows text-mode round-trips otherwise
+# rewrite whole files as CRLF and turn small edits into whole-file diffs.
+* text=auto eol=lf
+
+*.webp binary
+*.png  binary
+*.jpg  binary

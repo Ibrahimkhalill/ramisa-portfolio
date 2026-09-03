@@ -42,6 +42,7 @@ export type Project = {
   /** Which architecture diagram to render alongside it. */
   diagram:
     | 'coder'
+    | 'builder'
     | 'gitlab'
     | 'ppr'
     | 'scraper'
@@ -76,6 +77,17 @@ export const PROJECTS: Project[] = [
   {
     index: '02',
     category: 'Developer Tooling · Betopia',
+    title: 'Betopia Web Builder',
+    description:
+      'A desktop environment that turns a Figma design URL into a running React application. It writes the project spec first — architecture, design system and asset inventory — then generates the frontend component by component, with a code editor, a live preview and a real terminal in the same window. The agent’s file writes and shell commands are each recorded in an append-only audit log alongside their approval state, so anything touching the developer’s machine is either signed off or explicitly marked as not needing it. A console tracks TypeScript errors and warnings against the live build with a one-press Auto Fix, and Git and publishing are built in. In beta inside Betopia.',
+    tech: ['TypeScript', 'React', 'Vite', 'LLM', 'Node.js', 'Git'],
+    diagram: 'builder',
+    href: '',
+    private: true,
+  },
+  {
+    index: '03',
+    category: 'Developer Tooling · Betopia',
     title: 'GitLab Analysis Agent',
     description:
       'A Django + Celery agent that scans 80,000+ GitLab repositories on a 24-hour cycle. An eight-step pipeline extracts features with an LLM, detects similarity, scores quality, calculates reusable code percentage, and suggests potential IP products. A twelve-page React dashboard sits over it — project explorer, feature browser, modules, domains, similarity viewer, quality reports, IP suggestions, semantic search and agent run history. Deployed with Docker and Vercel.',
@@ -90,7 +102,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    index: '03',
+    index: '04',
     category: 'GovTech · Applied AI',
     title: 'PPR Procurement Evaluation Assistant',
     description:
@@ -101,7 +113,7 @@ export const PROJECTS: Project[] = [
     private: true,
   },
   {
-    index: '04',
+    index: '05',
     category: 'Data Engineering · Bangla NLP',
     title: 'Bangladesh Bank Circular Scraper',
     description:
@@ -117,7 +129,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    index: '05',
+    index: '06',
     category: 'Research · Speech Synthesis',
     title: 'TTS Architecture & Voice Cloning R&D',
     description:
@@ -127,7 +139,7 @@ export const PROJECTS: Project[] = [
     href: 'https://github.com/Ramisa-16/R-D-about-TTS-Models-Architecture-Structure',
   },
   {
-    index: '06',
+    index: '07',
     category: 'Voice AI · Product',
     title: 'Language Learning App',
     description:
@@ -137,7 +149,7 @@ export const PROJECTS: Project[] = [
     href: 'https://github.com/Ramisa-16/Language-Learning-App',
   },
   {
-    index: '07',
+    index: '08',
     category: 'AI Platform · White-label',
     title: 'White-Label AI Culinary Platform',
     description:

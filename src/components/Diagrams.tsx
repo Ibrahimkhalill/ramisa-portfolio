@@ -65,9 +65,9 @@ function CoderDiagram() {
           ['Reviewable diffs', 'multi-file'],
         ].map(([k, v]) => (
           <li key={k}>
-            <div className="flex items-center justify-between gap-4 border border-rule bg-paper px-4 py-3">
+            <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border border-rule bg-paper px-4 py-3">
               <span className="break-words text-[14px] text-body">{k}</span>
-              <span className="meta shrink-0">{v}</span>
+              <span className="meta">{v}</span>
             </div>
             <Arrow vertical />
           </li>
@@ -99,7 +99,59 @@ function CoderDiagram() {
   );
 }
 
-/* ---------------------------------------------------- 02 GitLab agent */
+/* ------------------------------------------ 02 Betopia Web Builder */
+
+function BuilderDiagram() {
+  return (
+    <Frame label="Figma URL → running app">
+      <ol className="space-y-0">
+        {[
+          ['Figma design URL', 'input'],
+          ['Project spec', 'architecture · design · assets'],
+          ['React + TypeScript app', 'components · data · pages'],
+          ['Editor, preview, terminal', 'one window'],
+        ].map(([k, v], i, arr) => (
+          <li key={k}>
+            <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border border-rule bg-paper px-4 py-3">
+              <span className="break-words text-[14px] text-body">{k}</span>
+              <span className="meta">{v}</span>
+            </div>
+            {i < arr.length - 1 && <Arrow vertical />}
+          </li>
+        ))}
+      </ol>
+
+      {/* Both of these are the literal states the agent panel reports. The
+          builder writes files and runs shell commands on the developer's own
+          machine, so which of the two an action gets is the whole safety
+          story. */}
+      <div className="mt-6 grid grid-cols-2 gap-3">
+        <div className="border border-accent/35 bg-accent/[0.07] px-4 py-3 text-center">
+          <span className="font-mono text-[13px] text-accent">APPROVED</span>
+        </div>
+        <div className="border border-rule bg-paper px-4 py-3 text-center">
+          <span className="font-mono text-[13px] text-faint">NOT REQUIRED</span>
+        </div>
+      </div>
+
+      <div className="mt-6 grid grid-cols-1 gap-px bg-rule">
+        {[
+          ['write_file · delete_file · bash', 'every call carries its approval state'],
+          ['audit.jsonl', 'append-only, one line per action'],
+          ['Errors · warnings · Auto Fix', 'console over the live build'],
+          ['Git and Publish', 'commit and ship without leaving'],
+        ].map(([k, v]) => (
+          <div key={k} className="bg-paper px-4 py-3">
+            <p className="break-words font-mono text-[12px] text-body">{k}</p>
+            <p className="mt-1 text-[12px] text-faint">{v}</p>
+          </div>
+        ))}
+      </div>
+    </Frame>
+  );
+}
+
+/* ------------------------------------------- 03 GitLab Analysis Agent */
 
 const GITLAB_STEPS = [
   'Authenticate',
@@ -159,9 +211,9 @@ function PprDiagram() {
       <ol className="space-y-0">
         {steps.map((step) => (
           <li key={step.k}>
-            <div className="flex items-center justify-between gap-4 border border-rule bg-paper px-4 py-3">
+            <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border border-rule bg-paper px-4 py-3">
               <span className="break-words text-[14px] text-body">{step.k}</span>
-              <span className="meta shrink-0">{step.s}</span>
+              <span className="meta">{step.s}</span>
             </div>
             <Arrow vertical />
           </li>
@@ -232,9 +284,9 @@ function LanguageDiagram() {
           ['Learning progress', 'goal tracking'],
         ].map(([k, v], i, arr) => (
           <div key={k}>
-            <div className="flex items-center justify-between gap-4 border border-rule bg-paper px-4 py-3">
+            <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border border-rule bg-paper px-4 py-3">
               <span className="break-words text-[14px] text-body">{k}</span>
-              <span className="meta shrink-0">{v}</span>
+              <span className="meta">{v}</span>
             </div>
             {i < arr.length - 1 && <Arrow vertical />}
           </div>
@@ -323,6 +375,7 @@ function VoiceDiagram() {
 
 const MAP = {
   coder: CoderDiagram,
+  builder: BuilderDiagram,
   gitlab: GitLabDiagram,
   ppr: PprDiagram,
   scraper: ScraperDiagram,
