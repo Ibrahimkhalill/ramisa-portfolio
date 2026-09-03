@@ -97,7 +97,7 @@ export default function Work() {
                           href={p.href}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-2.5 text-[15px] text-ink"
+                          className="-my-2 inline-flex items-center gap-2.5 py-2 text-[15px] text-ink"
                         >
                           <span className="link-underline">View on GitHub</span>
                           <span

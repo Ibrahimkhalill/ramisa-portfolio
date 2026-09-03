@@ -295,7 +295,7 @@ export function OpenSource() {
             href={`${PROFILE.github}?tab=repositories`}
             target="_blank"
             rel="noreferrer"
-            className="group mt-12 inline-flex items-center gap-2.5 text-[15px] text-ink"
+            className="group mt-10 inline-flex items-center gap-2.5 py-2 text-[15px] text-ink"
           >
             <span className="link-underline">View all 71 repositories</span>
             <span
@@ -354,7 +354,7 @@ export function Contact() {
                 href={l.href}
                 target="_blank"
                 rel="noreferrer"
-                className="group inline-flex items-center gap-2 text-[15px] text-ink"
+                className="group -my-2 inline-flex items-center gap-2 py-2 text-[15px] text-ink"
               >
                 <span className="link-underline">{l.label}</span>
                 <span
@@ -382,7 +382,7 @@ export function Contact() {
                     href={c.href}
                     target={c.href.startsWith('mailto') ? undefined : '_blank'}
                     rel="noreferrer"
-                    className="link-underline break-all font-mono text-[14px] text-body"
+                    className="link-underline -my-1.5 inline-block break-all py-1.5 font-mono text-[14px] text-body"
                   >
                     {c.v}
                   </a>
@@ -425,7 +425,7 @@ export function Footer() {
                   href={l.href}
                   target={l.href.startsWith('mailto') ? undefined : '_blank'}
                   rel="noreferrer"
-                  className="link-underline text-[15px] text-muted transition-colors hover:text-ink"
+                  className="link-underline -my-1.5 inline-block py-1.5 text-[15px] text-muted transition-colors hover:text-ink"
                 >
                   {l.label}
                 </a>

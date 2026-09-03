@@ -65,7 +65,7 @@ export default function Hero() {
                   href={PROFILE.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="group inline-flex items-center gap-2 text-[15px] text-ink"
+                  className="group -my-2 inline-flex items-center gap-2 py-2 text-[15px] text-ink"
                 >
                   <span className="link-underline">GitHub</span>
                   <span

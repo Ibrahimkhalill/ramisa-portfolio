@@ -30,7 +30,7 @@ export default function Nav() {
       <nav className="mx-auto flex max-w-shell items-center justify-between gap-6 px-6 py-5 md:px-10">
         <a
           href="#top"
-          className="font-mono text-[14px] font-medium tracking-[0.2em] text-ink"
+          className="-my-2 -ml-2 inline-block px-2 py-2 font-mono text-[14px] font-medium tracking-[0.2em] text-ink"
           aria-label={PROFILE.name}
         >
           {PROFILE.initials}
@@ -70,7 +70,7 @@ export default function Nav() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? 'Close menu' : 'Open menu'}
-            className="font-mono text-[13px] text-ink md:hidden"
+            className="-my-2 -mr-2 px-2 py-2.5 font-mono text-[13px] text-ink md:hidden"
           >
             {open ? 'Close' : 'Menu'}
           </button>
